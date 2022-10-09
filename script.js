@@ -92,11 +92,14 @@ function guessLetter() {
   keyboardButtons.forEach((letterDiv) => {
     letterDiv.addEventListener("click", (btn) => {
       if (
-        generatedWord.split("").some((letter) => letter === letterDiv.innerHTML)
+        generatedWord
+          .split("")
+          .some((letter) => letter === letterDiv.innerHTML) ||
+        wrongLetters.split("").some((letter) => letter === letterDiv.innerHTML)
       ) {
         displayLetter(letterDiv.innerHTML);
       } else {
-        wrongLetters += " " + letterDiv.innerHTML + ",";
+        wrongLetters += letterDiv.innerHTML;
         wrongLettersContainer.innerHTML = wrongLetters;
 
         if (hangmanPartsIndex !== 6) {
