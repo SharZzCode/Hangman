@@ -96,7 +96,6 @@ function guessLetter() {
       ) {
         displayLetter(letterDiv.innerHTML);
       } else {
-        console.log("wrong");
         wrongLetters += " " + letterDiv.innerHTML + ",";
         wrongLettersContainer.innerHTML = wrongLetters;
 
@@ -104,7 +103,6 @@ function guessLetter() {
           hangmanParts[hangmanPartsIndex].style.display = "block";
         }
 
-        console.log(hangmanPartsIndex);
         if (hangmanPartsIndex === 6) {
           hangmanParts.forEach((hangmanPart) => {
             hangmanPart.style.backgroundColor = "#c4301a";
@@ -113,6 +111,8 @@ function guessLetter() {
 
           displayedHiddenWord.innerHTML = generatedWord;
           displayedHiddenWord.style.color = "#c4301a";
+          keyboard.style.display = "none";
+          helpBtn.style.display = "none";
         } else {
           hangmanPartsIndex++;
         }
@@ -157,7 +157,6 @@ function displayRandomLetter() {
   } else {
     displayRandomLetter();
   }
-  console.log(randomNum);
 }
 
 // Restore the page when click the start game
@@ -171,5 +170,7 @@ startBtn.addEventListener("click", () => {
 function checkWin() {
   if (generatedWord === hiddenWord) {
     displayedHiddenWord.style.color = "green";
+    keyboard.style.display = "none";
+    helpBtn.style.display = "none";
   }
 }
